@@ -10,9 +10,9 @@ A DeepSeek Harness (DSH) Web GUI plugin that **merges context-compaction details
 
 ## Preview
 
-> The images below are **mockups** drawn at DSH's real window metrics (850px wide, the shipped card/composer/status-bar sizes and colors), not screenshots; the figures on screen are the plugin's own arithmetic, not decoration.
+> The images below are **mockups** redrawn from a pixel-by-pixel measurement of a real 850×276 DSH window, not screenshots; the figures on screen are the plugin's own arithmetic.
 
-Light theme: the popover is still the original usage window, plus the compaction line, the compaction count and each compaction's threshold; the trigger chip sits at the right edge of the status bar.
+Light theme: the shipped usage popover is still where it was, now carrying the compaction line, the compaction count and each compaction's threshold; the trigger chip sits at the right end of the footer strip.
 
 ![Merged usage window, light theme](docs/images/panel-light.png)
 
@@ -104,7 +104,18 @@ If a model has its own compaction policy (`modelPolicies`), put the equivalent r
 node docs/mockups/generate.cjs
 ```
 
-The script redraws the DSH window at its shipped metrics — cards 314×59 with an 11px gap at x=51, composer inset 32px with a 20px radius, a 28px status bar with a 1px top border, the 264px popover aligned to the chip's right edge and 40px above the status bar — using `dsh-client-ui-theme`'s literal values (light: `#fafafa` cards, `#ffffff` popover, `#e9e9e9` borders; dark: `#212123`, `#2c2c2e`; chart colors `#adb2b8`/`#a78bfa`/`#4d93f8`; state colors `#22c55e`/`#f59e0b`/`#ec1313`). It renders with headless Chrome at 2x, crops the transparent margin and box-filters down to 1x. Change the script together with the UI so the two never drift. Requires Node 20+ and Chrome (or set `CHROME_PATH`).
+Every coordinate in the script was measured pixel by pixel off a real 850×276 DSH window rather than estimated:
+
+| Element | Measured |
+|---|---|
+| composer | x 31–812 (781 wide), y 145–244 (99 tall), radius 20, 1px `#ececec` |
+| placeholder | 14px `#adb2b8` at x 49 |
+| control row | `+` circle 43–70 (`#f5f6f7`, 28px) · circled-i 92–111 · 完全权限 112–160 · ⌄ 168–175 · ✦ 319–328 · model 358–524 · mic 532–544 · send 560–588 |
+| message actions | copy 52 · up 88 · down 124 · share 160 (36px pitch) · usage 206–303 · 05:23 320–347 |
+| footer strip | 1px `#e9e9e9` border at y=244, `#fafafa` fill, row right-aligned to the chip's right edge x=623 |
+| popover | x 553–817 (264 wide), 38px above the bottom, 12px padding, radius 12 |
+
+Colors are `dsh-client-ui-theme`'s literal values: light `#fafafa`/`#ffffff`/`#ececec`/`#adb2b8`/`#61666b`, dark `#212123`/`#232324`/`#2c2c2e`; chart `#adb2b8`·`#a78bfa`·`#4d93f8`; state `#22c55e`·`#f59e0b`·`#ec1313`. With the popover open the chip's background is the hover overlay `#ecedee`, not `#f5f6f7`. It renders with headless Chrome at 2x, crops the transparent margin and box-filters down to 1x. Change the script together with the UI so the two never drift. Requires Node 20+ and Chrome (or set `CHROME_PATH`).
 
 ## Caveats
 
