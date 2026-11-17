@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "Context compaction meter",
+    "description": "Merges context-compaction information directly into the existing context-usage window under the composer (the popover opened from the percentage) instead of taking a separate panel. On top of the original 'X% of context used · ~usage/window · system prompt/tool definitions/messages', it adds the compaction line, the compaction count, and each compaction's threshold, and draws the compaction line on the usage bar at the model's real trigger point. The trigger is derived from the compaction policy and model capacity: a 1M context window, 128K output reservation, the default 65536 headroom, and a 0.8 threshold ratio put the real trigger at 800K (80% of the window), so the line is drawn at 80% of the bar. The current usage is colored by proximity to that line: green below 50% of the line, yellow from 50% to 75%, red above 75%. No explanatory notes are shown. Click outside or press Escape to close.",
+    "detail": "README.md"
+  }
+}

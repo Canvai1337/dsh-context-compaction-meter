@@ -1,0 +1,8 @@
+- insert:
+    - id: context-compaction-meter
+      name: '@local/context-compaction-meter'
+      # Mirror dsh-compaction-basic's policy so the drawn line matches its real
+      # trigger. Change these together with that plugin's config if you tune it.
+      config:
+        thresholdRatio: 0.8
+        headroomTokens: 65536

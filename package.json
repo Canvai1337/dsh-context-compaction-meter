@@ -1,0 +1,50 @@
+{
+  "name": "@local/context-compaction-meter",
+  "version": "1.1.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "author": "Canvai1337",
+  "description": "Merges context-compaction details into the composer's context-usage window: compaction count, each compaction's threshold, and a compaction-line marker drawn at the model's real trigger point, with the current usage colored by proximity to that line.",
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "context",
+    "compaction"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Canvai1337/dsh-context-compaction-meter.git"
+  },
+  "homepage": "https://github.com/Canvai1337/dsh-context-compaction-meter#readme",
+  "bugs": {
+    "url": "https://github.com/Canvai1337/dsh-context-compaction-meter/issues"
+  },
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "docs",
+    "README.md",
+    "README.en.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "icon.svg"
+  ],
+  "dsh": {
+    "bundle": { "patch": "./cordis.patch.yml" },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": ["@deepseek-ai/dsh-client-ui-conversation"]
+    }
+  }
+}
