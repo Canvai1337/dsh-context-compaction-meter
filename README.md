@@ -10,15 +10,15 @@ English: [README.en.md](README.en.md)
 
 ## 界面预览
 
-> 以下为按 1.1.0 实际界面尺寸、配色与文案制作的**模拟图**（非真机截图）；图上的数字就是插件自己的算式结果，不是装饰。
+> 以下为按 DSH 实际界面（850px 窗口宽度、卡片/输入框/状态栏的真实尺寸与配色）制作的**模拟图**，非真机截图；图上的数字就是插件自己的算式结果，不是装饰。
 
-深色主题：弹层仍是原来的用量窗口，多了压缩线、已压缩次数与每次压缩的阈值。
-
-![深色主题下的合并用量窗口](docs/images/panel-dark.png)
-
-浅色主题（跟随明暗主题，颜色全部走主题 token）：
+浅色主题：弹层仍是原来的用量窗口，多了压缩线、已压缩次数与每次压缩的阈值；触发胶囊就在状态栏最右侧。
 
 ![浅色主题下的合并用量窗口](docs/images/panel-light.png)
+
+深色主题（跟随明暗主题，颜色全部走主题 token）；此时已压缩 2 次，读数落在黄色档：
+
+![深色主题下的合并用量窗口](docs/images/panel-dark.png)
 
 用量读数与圆环按「距压缩线的接近程度」着色，越接近越醒目：
 
@@ -104,7 +104,7 @@ bundle 行可覆盖两项（`cordis.patch.yml` 已写出默认值）：
 node docs/mockups/generate.cjs
 ```
 
-脚本把 `client.js` 的 STYLE 逐条翻译成静态 CSS（主题 token 取 `dsh-client-ui-theme` 的实值），用 headless Chrome 以 2x 渲染、裁掉透明边、再 box-filter 降到 1x。改界面时同步改脚本，图和实现就不会漂。需要 Node 20+ 与 Chrome（或设 `CHROME_PATH`）。
+脚本按 DSH 真实界面重画窗口：卡片 314×59、间距 11、左边界 51；输入框左右 32、圆角 20；状态栏 28px 高带 1px 上边框；弹层 264px 宽、与胶囊右缘对齐、距状态栏 40px。配色取 `dsh-client-ui-theme` 的实值（浅色 `#fafafa` 卡片、`#ffffff` 弹层、`#e9e9e9` 描边；深色 `#212123`、`#2c2c2e`；图表色 `#adb2b8`/`#a78bfa`/`#4d93f8`；状态色 `#22c55e`/`#f59e0b`/`#ec1313`）。渲染用 headless Chrome 2x，裁掉透明边后 box-filter 降到 1x。改界面时同步改脚本，图和实现就不会漂。需要 Node 20+ 与 Chrome（或设 `CHROME_PATH`）。
 
 ## 需要注意
 

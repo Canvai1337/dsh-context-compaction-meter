@@ -10,15 +10,15 @@ A DeepSeek Harness (DSH) Web GUI plugin that **merges context-compaction details
 
 ## Preview
 
-> The images below are **mockups** drawn at the plugin's real 1.1.0 dimensions, colors and copy (not screenshots); the figures on screen are the plugin's own arithmetic, not decoration.
+> The images below are **mockups** drawn at DSH's real window metrics (850px wide, the shipped card/composer/status-bar sizes and colors), not screenshots; the figures on screen are the plugin's own arithmetic, not decoration.
 
-Dark theme: the popover is still the original usage window, plus the compaction line, the compaction count and each compaction's threshold.
-
-![Merged usage window, dark theme](docs/images/panel-dark.png)
-
-Light theme (follows the app theme; every color is a theme token):
+Light theme: the popover is still the original usage window, plus the compaction line, the compaction count and each compaction's threshold; the trigger chip sits at the right edge of the status bar.
 
 ![Merged usage window, light theme](docs/images/panel-light.png)
+
+Dark theme (follows the app theme; every color is a theme token); here two compactions have run and the reading sits in the yellow band:
+
+![Merged usage window, dark theme](docs/images/panel-dark.png)
 
 The reading and the ring are colored by proximity to the compaction line:
 
@@ -104,7 +104,7 @@ If a model has its own compaction policy (`modelPolicies`), put the equivalent r
 node docs/mockups/generate.cjs
 ```
 
-The script translates `client.js`'s STYLE into static CSS (theme tokens resolved to their shipped values), renders it with headless Chrome at 2x, crops the transparent margin and box-filters down to 1x. Change the script together with the UI so the two never drift. Requires Node 20+ and Chrome (or set `CHROME_PATH`).
+The script redraws the DSH window at its shipped metrics — cards 314×59 with an 11px gap at x=51, composer inset 32px with a 20px radius, a 28px status bar with a 1px top border, the 264px popover aligned to the chip's right edge and 40px above the status bar — using `dsh-client-ui-theme`'s literal values (light: `#fafafa` cards, `#ffffff` popover, `#e9e9e9` borders; dark: `#212123`, `#2c2c2e`; chart colors `#adb2b8`/`#a78bfa`/`#4d93f8`; state colors `#22c55e`/`#f59e0b`/`#ec1313`). It renders with headless Chrome at 2x, crops the transparent margin and box-filters down to 1x. Change the script together with the UI so the two never drift. Requires Node 20+ and Chrome (or set `CHROME_PATH`).
 
 ## Caveats
 
